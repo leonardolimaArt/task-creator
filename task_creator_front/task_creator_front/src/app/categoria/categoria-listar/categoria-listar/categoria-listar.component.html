@@ -1,0 +1,51 @@
+<mat-toolbar>CATEGORIAS</mat-toolbar>
+
+<ng-template #carregando>
+  <mat-spinner></mat-spinner>
+</ng-template>
+
+<div class="componente-container">
+  <div *ngIf="tarefas$ | async as tarefas; else carregando">
+    <div class="linha-botoes">
+      <button
+        mat-raised-button
+        color="primary"
+        routerLink="/categoria/cadastrar"
+      >
+        Cadastrar
+      </button>
+    </div>
+    <p></p>
+    <table mat-table [dataSource]="tarefas">
+      <ng-container matColumnDef="id">
+        <th mat-header-cell *matHeaderCellDef>ID</th>
+        <td mat-cell *matCellDef="let tarefa">
+          <a routerLink="/categoria/editar/{{ tarefa.id }}">
+            {{ tarefa.id }}
+          </a>
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="titulo">
+        <th mat-header-cell *matHeaderCellDef>TITULO</th>
+        <td mat-cell *matCellDef="let tarefa">
+          <a routerLink="/categoria/editar/{{ tarefa.id }}">
+            {{ tarefa.titulo }}
+          </a>
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="descricao">
+        <th mat-header-cell *matHeaderCellDef>DESCRIÇÃO</th>
+        <td mat-cell *matCellDef="let tarefa">
+          <a routerLink="/categoria/editar/{{ tarefa.id }}">
+            {{ tarefa.descricao }}
+          </a>
+        </td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="colunasTabela"></tr>
+      <tr mat-row *matRowDef="let row; columns: colunasTabela"></tr>
+    </table>
+  </div>
+</div>

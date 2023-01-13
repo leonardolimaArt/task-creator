@@ -1,0 +1,43 @@
+/* You can add global styles to this file, and also import other style files */
+.linha-botoes button,
+.linha-botoes a {
+    margin: 8px 8px 0px 0px;
+}
+
+.form-padrao {
+    display: flex;
+    flex-direction: column;
+}
+
+.form-padrao > * {
+    width: 100%;
+}
+
+.componente-container {
+    padding: 15px;
+}
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+a { text-decoration: none; color:black } /* Globally */
+
+/* Each state */
+
+a:visited { text-decoration: none; color:black; }
+a:hover { text-decoration: none; color:blue; }
+a:focus { text-decoration: none; color:black; }
+a:hover, a:active { text-decoration: none; color:blue }
+
+td, th {
+    text-align: center !important;
+    vertical-align: middle !important;
+}
+
+.mat-sort-header-container {
+    justify-content: center !important;
+}
+
+img{
+    max-width: 60%;
+    max-height: 60%;
+}

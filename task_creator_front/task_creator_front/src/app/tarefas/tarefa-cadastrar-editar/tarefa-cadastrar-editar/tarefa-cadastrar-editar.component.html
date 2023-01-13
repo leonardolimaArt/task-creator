@@ -1,0 +1,104 @@
+<mat-toolbar></mat-toolbar>
+
+<div class="componente-container">
+  <form
+    class="form-padrao"
+    *ngIf="formGroup"
+    [formGroup]="formGroup"
+    (ngSubmit)="formGroup.valid && salvar()"
+    novalidade
+  >
+    <h4>Titulo</h4>
+    <mat-form-field>
+      <input
+        matInput
+        placeholder="Titulo"
+        formControlName="titulo"
+        required
+        autocomplete="off"
+      />
+      <mat-error>Campo obrigatório</mat-error>
+    </mat-form-field>
+
+    <h4>Descrição</h4>
+    <mat-form-field>
+      <input
+        matInput
+        placeholder="Descrição"
+        formControlName="descricao"
+        required
+        autocomplete="off"
+      />
+      <mat-error>Campo obrigatório</mat-error>
+    </mat-form-field>
+
+    <h4>Data Prevista</h4>
+    <mat-form-field>
+      <input
+        matInput
+        type="date"
+        placeholder="Data Prevista"
+        formControlName="dtPrevista"
+        required
+        autocomplete="off"
+      />
+      <mat-error>Campo obrigatório</mat-error>
+    </mat-form-field>
+
+    <h4>Data de Conclusão</h4>
+    <mat-form-field>
+      <input
+        matInput
+        type="date"
+        placeholder="Data Conclusão"
+        formControlName="dtConclusao"
+        required
+        autocomplete="off"
+      />
+      <mat-error>Campo obrigatório</mat-error>
+    </mat-form-field>
+
+    <h4>Categoria</h4>
+    <mat-form-field appearance="fill">
+      <mat-label>Selecione a Categoria</mat-label>
+      <mat-select formControlName="idCategoria">
+        <mat-option *ngFor="let sts of categori!" [value]="sts.id">
+          {{ sts.titulo }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <h4>Status</h4>
+    <mat-form-field appearance="fill">
+      <mat-label>Selecione o Status</mat-label>
+      <mat-select formControlName="idStatus">
+        <mat-option *ngFor="let sts of estatus!" [value]="sts.id">
+          {{ sts.titulo }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <div class="linha-botoes">
+      <button mat-raised-button color="primary" [disabled]="!formGroup.valid">
+        Salvar
+      </button>
+      <button
+        *ngIf="tarefa && tarefa.id"
+        type="button"
+        mat-raised-button
+        color="warn"
+        (click)="deletar()"
+      >
+        Deletar
+      </button>
+      <button
+        type="button"
+        mat-raised-button
+        color="primary"
+        routerLink="/tarefas"
+      >
+        Cancelar
+      </button>
+    </div>
+  </form>
+</div>
